@@ -18,10 +18,17 @@ const asyncMap = async (array, fn) => {
 
 const asyncSquare = (num) => {
     return new Promise((resolve, reject) => {
-        setTimeout(resolve, 1000, num ** 2);
+        setTimeout(reject, 1000, num ** 2);
     });
 };
 
 const numbers = [1, 2, 3, 4, 5];
 
-asyncMap(numbers, asyncSquare).then(console.log).catch(console.log);
+(async () => {
+    try {
+        const response = await asyncMap(numbers, asyncSquare);
+        console.log(response);
+    } catch (error) {
+        console.log(error);
+    }
+})();
