@@ -29,6 +29,6 @@ const numbers = [1, 2, 3, 4, 5];
         const response = await asyncMap(numbers, asyncSquare);
         console.log(response);
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 })();

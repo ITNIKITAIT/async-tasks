@@ -15,7 +15,7 @@ const asyncMap = async (array, fn, signal) => {
         }
     }
 
-    if (errors.length) throw { errors };
+    if (errors.length) throw new AggregateError(errors);
 
     return results;
 };

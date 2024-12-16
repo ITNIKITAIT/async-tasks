@@ -32,4 +32,4 @@ const asyncSquare = (num) => {
 
 const numbers = [1, 2, 3, 4, 5];
 
-asyncMap(numbers, asyncSquare).then(console.log).catch(console.log);
+asyncMap(numbers, asyncSquare).then(console.log).catch(console.error);
