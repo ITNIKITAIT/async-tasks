@@ -11,7 +11,7 @@ const asyncMap = (array, fn, cb) => {
             counter++;
             if (counter === array.length) {
                 if (!errors.length) cb(null, results);
-                else cb(errors, results);
+                else cb(new AggregateError(errors), results);
             }
         });
     }
@@ -22,7 +22,7 @@ const run = () => {
 
     const asyncSquare = (num, callback) => {
         setTimeout(() => {
-            let error = null;
+            let error = true;
 
             if (error) callback(error);
             else callback(null, num ** 2);

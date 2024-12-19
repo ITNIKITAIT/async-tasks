@@ -4,7 +4,7 @@ const asyncMap = async (array, fn, signal) => {
 
     for (const item of array) {
         try {
-            const value = await fn(item);
+            const value = await fn(item, signal);
             results.push(value);
         } catch (error) {
             errors.push(error);
@@ -20,13 +20,15 @@ const asyncMap = async (array, fn, signal) => {
     return results;
 };
 
-const asyncSquare = (num) => {
+const asyncSquare = (num, signal) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (num > 3) {
                 controller.abort();
             }
-
+            if (signal.aborted) {
+                throw new Error('aborted');
+            }
             resolve(num ** 2);
         }, 1000);
     });

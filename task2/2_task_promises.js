@@ -17,7 +17,7 @@ const asyncMap = (array, fn) => {
 
                     if (counter === array.length) {
                         if (!errors.length) resolve(results);
-                        else reject(errors);
+                        else reject(new AggregateError(errors));
                     }
                 });
         }
